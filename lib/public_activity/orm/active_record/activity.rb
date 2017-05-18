@@ -7,9 +7,9 @@ module PublicActivity
         include Renderable
         self.table_name = PublicActivity.config.table_name
 
-        # Define polymorphic association to the parent
-        belongs_to :trackable, :polymorphic => true
         with_options(::ActiveRecord::VERSION::MAJOR >= 5 ? { :required => false } : { }) do
+          # Define polymorphic association to the parent
+          belongs_to :trackable, :polymorphic => true
           # Define ownership to a resource responsible for this activity
           belongs_to :owner, :polymorphic => true
           # Define ownership to a resource targeted by this activity
